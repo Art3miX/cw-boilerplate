@@ -1,8 +1,8 @@
 #[cfg(test)]
 mod tests {
-    use crate::ContractError;
     use crate::contract::{execute, instantiate, query};
     use crate::msg::{ExecuteMsg, GetCustomResponse, InstantiateMsg, QueryMsg};
+    use crate::ContractError;
 
     use cosmwasm_std::testing::{mock_dependencies, mock_env, mock_info};
     use cosmwasm_std::{coins, from_binary, Attribute, DepsMut, Env, MessageInfo, Response};
@@ -70,7 +70,7 @@ mod tests {
         let err = execute(deps.as_mut(), env, err_info, msg);
 
         match err {
-            Err(ContractError::Unauthorized{}) => {}
+            Err(ContractError::Unauthorized {}) => {}
             _ => panic!("Must return unauthorized error"),
         }
 

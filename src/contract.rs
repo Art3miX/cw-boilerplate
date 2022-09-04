@@ -1,10 +1,12 @@
 #[cfg(not(feature = "library"))]
 use cosmwasm_std::entry_point;
-use cosmwasm_std::{to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult};
+use cosmwasm_std::{
+    to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response, StdResult,
+};
 use cw2::set_contract_version;
 
 use crate::error::ContractError;
-use crate::msg::{ExecuteMsg, InstantiateMsg, QueryMsg, GetCustomResponse};
+use crate::msg::{ExecuteMsg, GetCustomResponse, InstantiateMsg, QueryMsg};
 use crate::state::{Config, CONFIG};
 
 // version info for migration info
@@ -47,9 +49,9 @@ pub fn execute_custom(deps: DepsMut, info: MessageInfo) -> Result<Response, Cont
     let config = CONFIG.load(deps.storage)?;
 
     if config.owner != info.sender {
-        return Err(ContractError::Unauthorized {})
+        return Err(ContractError::Unauthorized {});
     }
-    
+
     Ok(Response::new())
 }
 
@@ -62,5 +64,7 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
 
 fn query_custom(deps: Deps) -> StdResult<GetCustomResponse> {
     let config = CONFIG.load(deps.storage)?;
-    Ok(GetCustomResponse {owner: config.owner.to_string()})
+    Ok(GetCustomResponse {
+        owner: config.owner.to_string(),
+    })
 }
