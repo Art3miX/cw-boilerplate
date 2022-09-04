@@ -55,7 +55,7 @@ mod tests {
     }
 
     #[test]
-    fn increment() {
+    fn custom() {
         let mut deps = mock_dependencies();
 
         let (_res, info, env) = mock_initialization(deps.as_mut(), None, None);
