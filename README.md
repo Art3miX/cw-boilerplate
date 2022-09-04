@@ -1,3 +1,7 @@
+```sh
+cargo generate --git https://github.com/Art3miX/cw-boilerplate.git --name PROJECT_NAME
+````
+
 # CosmWasm Starter Pack
 
 This is a template to build smart contracts in Rust to run inside a
@@ -28,7 +32,7 @@ Go to the folder in which you want to place it and run:
 **Latest: 1.0.0**
 
 ```sh
-cargo generate --git https://github.com/CosmWasm/cw-template.git --name PROJECT_NAME
+cargo generate --git https://github.com/Art3miX/cw-boilerplate.git --name PROJECT_NAME
 ````
 
 For cloning minimal code repo:
